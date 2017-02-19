@@ -1,0 +1,12 @@
+## Todo ##
+
+Work on a way to have react maintain the state of each of the elements, and have their class names rely
+on the internal state of the react component instead of on what I manually set it to be.
+This will help when I want to set multiple attributes like "hidden" "Inverted" etc.
+
+Build in save feature
+
+Add buttons for:
+line justification
+font
+font-size

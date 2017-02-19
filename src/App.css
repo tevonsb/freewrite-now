@@ -1,0 +1,77 @@
+.Fullpage {
+  transition: background-color 1.0s ease;
+  background-color: white;
+}
+
+.Black {
+  background-color: black;
+}
+
+.Margin-wrapper {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+.App {
+    margin-right: auto;
+    text-align: left;
+    text-align: center;
+    /*position: fixed;*/
+    z-index: 1;
+    cursor: text;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.Inverted {
+    color: white;
+}
+
+.Content {
+    line-height: 130%;
+    transition: color 1.0s ease;
+    color: black;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-bottom: 10%;
+    outline: none;
+    min-height: 100vh;
+}
+
+.Title {
+    transition: color 1.0s ease;
+    color: black;
+    text-align: left;
+    margin-top: 5%;
+    font-size: 40px;
+    outline: none;
+}
+
+.Content.Inverted {
+    color: white;
+}
+
+.Title.Inverted {
+    color: white;
+}
+
+input:focus, select:focus, textarea:focus, button:focus div:focus {
+    outline: none;
+}
+
+.Margin-wrapper {
+    margin-left: 10%;
+    margin-right: 10%;
+    max-width: 800px;
+    min-width: 400px;
+    margin: 0 auto;
+}
+
+::selection {
+    background: #ffb7b7;
+  }
+
+    .Content div {
+        padding-top: 20px;
+    }
