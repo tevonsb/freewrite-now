@@ -26,7 +26,6 @@ class Editor extends Component {
     className={this.props.className}
     disabled={false} // use true to disable edition
     onChange={this.props.onChange} // handle innerHTML change
-    onBlur={()=>this.props.onBlur('Content')}
     html={this.props.html}
     spellCheck={false}
     />

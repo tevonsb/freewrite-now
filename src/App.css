@@ -13,8 +13,6 @@
 }
 .App {
     margin-right: auto;
-    text-align: left;
-    text-align: center;
     /*position: fixed;*/
     z-index: 1;
     cursor: text;
@@ -31,7 +29,7 @@
     line-height: 130%;
     transition: color 1.0s ease;
     color: black;
-    text-align: left;
+    text-align: justify;
     margin-top: 10px;
     font-size: 20px;
     margin-bottom: 10%;

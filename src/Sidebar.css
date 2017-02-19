@@ -1,8 +1,8 @@
 
 
 .Sidebar {
- position: fixed;
- left: 20px;
+position: fixed;
+left: 20px;
 width: 50px;
 opacity: 100%;
 transition: display .30s ease;
@@ -66,4 +66,20 @@ input[type='submit'].button-clear:hover {
   background-color: transparent;
   border-color: transparent;
   color: #606c76;
+}
+
+#URLDiv {
+  position: relative;
+}
+
+#URLInput {
+  position: absolute;
+  top: 0px;
+  left: 100px;
+  background-color: white;
+  padding: 10px;
+  border-style: solid;
+  border-left: 1px;
+  border-bottom: 0px;
+  border-top: 0px;
 }

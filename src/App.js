@@ -14,8 +14,11 @@ class App extends Component {
 
     constructor(props) {
         super(props);
+        Mousetrap.stopCallback = function(){return false;}
         Mousetrap.bind(['command+k', 'ctrl+k'], this.toggleMenu.bind(this));
-        Mousetrap.bind(['command+h', 'ctrl+h'], this.toggleInverted.bind(this));
+        Mousetrap.bind(['command+j', 'ctrl+j'], this.toggleInverted.bind(this));
+        Mousetrap.bind(['command+u', 'ctrl+u'], function(){document.execCommand('underline');});
+        Mousetrap.bind(['tab'], this.handleTab.bind(this));
         this.state = {
             titlehtml: this.props.titleText,
             html: this.props.contentText,
@@ -34,6 +37,12 @@ class App extends Component {
         this.toggleInverted = this.toggleInverted.bind(this);
         canHandle=false;
     }
+
+    handleTab(e){
+      console.log("hitting tab...");
+      e.preventDefault();
+      document.execCommand('insertText', false, '   ');
+      }
 
     //Deals with saving etc
     componentWillMount(){
@@ -72,12 +81,19 @@ class App extends Component {
     }
 
     contentChange(evt) {
+        alert("triggered contentChange");
         this.onSave();
         this.setState({
             html: evt.target.value
         });
-        this.setState({first: false});
     }
+
+    handleURL(){
+      var selection = window.getSelection();
+      if(selection.isCollapsed) return;
+      var text = selection.toString();
+    }
+
 
     toggleCommand(command){
         document.execCommand(command, false, 0);
@@ -102,6 +118,7 @@ class App extends Component {
 
             <Sidebar className={this.state.inverted ? "Sidebar Hidden":"Sidebar"}
             inverted={this.state.inverted}
+            handleURL={this.handleURL}
             toggleCommand={this.toggleCommand.bind(this)}
             toggleInverted={this.toggleInverted.bind(this)}
             />

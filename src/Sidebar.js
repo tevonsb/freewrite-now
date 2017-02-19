@@ -38,6 +38,22 @@ class Sidebar extends Component {
       document.getElementById(button).blur();
     }
 
+    handleURL(){
+      var selection = window.getSelection();
+      var pastRange = selection.getRangeAt();
+
+      let input = document.getElementById('URLInput');
+      if(input.className === ""){
+        input.className = "Hidden";
+      } else {
+        input.className="";
+        if(input.value!=""){
+          document.execCommand("CreateLink", false, "http://"+input.value);
+        }
+      }
+
+    }
+
     render() {
 
         if(canHandle){
@@ -75,6 +91,16 @@ class Sidebar extends Component {
             onClick={this.toggleInverted}
             onFocus={()=>this.handleFocus('invertButton')}
              > INV </button>
+             <div id="URLDiv">
+             <button id="urlButton"
+             className="button-clear"
+             onClick={this.handleURL}
+             onFocus={()=>this.handleFocus('urlButton')}
+              > URL </button>
+              <input id="URLInput" type="text" placeholder="Enter your URL" className="Hidden"/>
+
+              </div>
+
             < /div >
 
         );
