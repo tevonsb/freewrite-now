@@ -85,14 +85,9 @@ class App extends Component {
 
     resetClassnames(){
             var sidebar = classNames("Sidebar", {'Hidden': this.state.menuHidden});
-            //var content = classNames("Content", {'Inverted': this.state.inverted});
-            //var title = classNames("Title", {'Inverted': this.state.inverted});
             var fullpage = classNames("Fullpage", {'Black': this.state.inverted});
-
             document.getElementById('page').className = fullpage;
             document.getElementById('Sidebar').className = sidebar;
-            //document.getElementById('Content').className = content;
-            //document.getElementById('Title').className = title;
     }
 
 
