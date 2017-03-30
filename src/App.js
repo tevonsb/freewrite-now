@@ -7,8 +7,11 @@ import Sidebar from './Sidebar.js';
 import Mousetrap from './Mousetrap.js';
 import classNames from 'classnames';
 import Editor from './Editor.js';
+import Utils from './Utils.js';
 
 var canHandle;
+
+var util = new Utils();
 
 class App extends Component {
 
@@ -36,12 +39,13 @@ class App extends Component {
         this.contentChange = this.titleChange.bind(this);
         this.toggleInverted = this.toggleInverted.bind(this);
         canHandle=false;
+        this.sel = null;
     }
 
     handleTab(e){
       console.log("hitting tab...");
       e.preventDefault();
-      document.execCommand('insertText', false, '   ');
+      document.execCommand('insertText', false, "\t");
       }
 
     //Deals with saving etc
@@ -89,9 +93,6 @@ class App extends Component {
     }
 
     handleURL(){
-      var selection = window.getSelection();
-      if(selection.isCollapsed) return;
-      var text = selection.toString();
     }
 
 

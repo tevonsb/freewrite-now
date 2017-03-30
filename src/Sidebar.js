@@ -3,8 +3,12 @@ import React, {
 } from 'react';
 import './Sidebar.css';
 import classNames from 'classnames';
+import Utils from './Utils.js';
+
+let util = new Utils();
 
 var canHandle;
+var sel;
 
 class Sidebar extends Component {
     constructor(props) {
@@ -39,17 +43,22 @@ class Sidebar extends Component {
     }
 
     handleURL(){
-      var selection = window.getSelection();
-      var pastRange = selection.getRangeAt();
-
+                if(window.getSelection){
+                  sel = util.saveSelection();
+                } else {
+                  util.restoreSelection(sel);
+                }
       let input = document.getElementById('URLInput');
+      if(input.value!=""){
+        document.execCommand("CreateLink", false, "http://"+input.value);
+        input.value = "";
+      }
+
+
       if(input.className === ""){
         input.className = "Hidden";
       } else {
         input.className="";
-        if(input.value!=""){
-          document.execCommand("CreateLink", false, "http://"+input.value);
-        }
       }
 
     }
