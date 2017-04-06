@@ -4,6 +4,7 @@ import React, {
 import './Sidebar.css';
 import classNames from 'classnames';
 import Utils from './Utils.js';
+import Mousetrap from './Mousetrap.js';
 
 let util = new Utils();
 
@@ -16,9 +17,25 @@ class Sidebar extends Component {
         this.toggleCommand = this.toggleCommand.bind(this);
         this.resetClassnames = this.resetClassnames.bind(this);
         this.toggleInverted = this.toggleInverted.bind(this);
+        this.handleURL = this.handleURL.bind(this);
+        this.handleReturn = this.handleReturn.bind(this);
+        Mousetrap.bind(['return'], this.handleReturn.bind(this));
         canHandle=false;
+        sel = null;
     }
 
+    handleReturn(e){
+      if(document.activeElement !== document.getElementById("URLInput")) return;
+      if(e.key == "Enter"){
+        e.preventDefault();
+        this.handleURL();
+      }
+    }
+
+
+    componentDidMount(){
+      document.getElementById("URLInput").addEventListener('onKeyUp',this.handleURL);
+    }
 
     toggleInverted(){
       this.props.toggleInverted();
@@ -42,25 +59,34 @@ class Sidebar extends Component {
       document.getElementById(button).blur();
     }
 
+    handleList(){
+      document.execCommand('insertUnorderedList', false, false);
+    }
+
+
     handleURL(){
-                if(window.getSelection){
-                  sel = util.saveSelection();
-                } else {
+                if(sel !== null){
                   util.restoreSelection(sel);
+                  sel = null;
+                }else{
+                  if(window.getSelection){
+                    console.log("asked to save selection");
+                    sel = util.saveSelection();
                 }
+              }
       let input = document.getElementById('URLInput');
-      if(input.value!=""){
+      if(input.value!==""){
         document.execCommand("CreateLink", false, "http://"+input.value);
         input.value = "";
+      }else{
+        document.execCommand("unlink", false, false);
       }
-
 
       if(input.className === ""){
         input.className = "Hidden";
       } else {
         input.className="";
       }
-
     }
 
     render() {
@@ -106,8 +132,13 @@ class Sidebar extends Component {
              onClick={this.handleURL}
              onFocus={()=>this.handleFocus('urlButton')}
               > URL </button>
-              <input id="URLInput" type="text" placeholder="Enter your URL" className="Hidden"/>
+              <input id="URLInput" onKeyPress={this.handleReturn} type="text" placeholder="Enter your URL" className="Hidden"/>
 
+              <button id="listButton"
+              className="button-clear"
+              onClick={this.handleList}
+              onFocus={()=>this.handleFocus('listButton')}
+              > LIST </button>
               </div>
 
             < /div >

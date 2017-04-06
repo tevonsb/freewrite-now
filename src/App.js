@@ -11,7 +11,6 @@ import Utils from './Utils.js';
 
 var canHandle;
 
-var util = new Utils();
 
 class App extends Component {
 
@@ -21,6 +20,7 @@ class App extends Component {
         Mousetrap.bind(['command+k', 'ctrl+k'], this.toggleMenu.bind(this));
         Mousetrap.bind(['command+j', 'ctrl+j'], this.toggleInverted.bind(this));
         Mousetrap.bind(['command+u', 'ctrl+u'], function(){document.execCommand('underline');});
+        Mousetrap.bind(['command+l', 'ctrl+l'], this.addList.bind(this));
         Mousetrap.bind(['tab'], this.handleTab.bind(this));
         this.state = {
             titlehtml: this.props.titleText,
@@ -42,11 +42,32 @@ class App extends Component {
         this.sel = null;
     }
 
+    handleUnindent(e){
+      console.log("fired unindent");
+      e.preventDefault();
+      document.execCommand('unindent', false, false);
+    }
+
+    addList(e){
+      e.preventDefault();
+      document.execCommand('insertUnorderedList');
+    }
+
+
+
     handleTab(e){
       console.log("hitting tab...");
       e.preventDefault();
-      document.execCommand('insertText', false, "\t");
-      }
+      /*
+      if (window.getSelection) {
+        var sel = window.getSelection();
+        if (sel.isCollapsed) {
+          document.execCommand('insertText', false, "\t");
+          return;
+        }
+      }*/
+      document.execCommand('indent', false, false);
+    }
 
     //Deals with saving etc
     componentWillMount(){

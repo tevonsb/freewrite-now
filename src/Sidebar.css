@@ -76,7 +76,7 @@ input[type='submit'].button-clear:hover {
   position: absolute;
   top: 0px;
   left: 100px;
-  background-color: red;
+  background-color: #eeeff2;
   padding: 10px;
   border-style: solid;
   border-left: 1px;
