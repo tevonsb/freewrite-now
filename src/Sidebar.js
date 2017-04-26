@@ -139,7 +139,15 @@ class Sidebar extends Component {
               onClick={this.handleList}
               onFocus={()=>this.handleFocus('listButton')}
               > LIST </button>
+              <button id="fileButton"
+                className="button-clear"
+                onClick={this.props.newFile}
+                onFocus={()=>this.handleFocus('fileButton')}
+                > FILE </button>
+
               </div>
+
+
 
             < /div >
 

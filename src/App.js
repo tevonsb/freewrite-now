@@ -53,19 +53,21 @@ class App extends Component {
       document.execCommand('insertUnorderedList');
     }
 
+    newFile(){
+      var input = document.getElementById('fileModal');
+      var filename = input.value;
+      
+      if(input.style.display === 'block'){
+        input.style.display = 'none';
+      }else{
+        input.style.display = 'block';
+      }
+    }
 
 
     handleTab(e){
       console.log("hitting tab...");
       e.preventDefault();
-      /*
-      if (window.getSelection) {
-        var sel = window.getSelection();
-        if (sel.isCollapsed) {
-          document.execCommand('insertText', false, "\t");
-          return;
-        }
-      }*/
       document.execCommand('indent', false, false);
     }
 
@@ -106,11 +108,18 @@ class App extends Component {
     }
 
     contentChange(evt) {
-        alert("triggered contentChange");
+      console.log("contentChange");
         this.onSave();
         this.setState({
             html: evt.target.value
         });
+        this.getTypedText();
+    }
+
+    getTypedText(){
+       var node = document.getSelection().anchorNode;
+       console.log(node.textContent);
+       node.textContent = "Hello there!";
     }
 
     handleURL(){
@@ -128,6 +137,15 @@ class App extends Component {
             document.getElementById('Sidebar').className = sidebar;
     }
 
+    handleReturn(e){
+      if(document.activeElement !== document.getElementById("fileInput")) return;
+      if(e.key == "Enter"){
+        e.preventDefault();
+        this.newFile();
+      }
+    }
+
+
 
     render() {
       if(canHandle){
@@ -143,7 +161,14 @@ class App extends Component {
             handleURL={this.handleURL}
             toggleCommand={this.toggleCommand.bind(this)}
             toggleInverted={this.toggleInverted.bind(this)}
+            newFile={this.newFile.bind(this)}
             />
+
+            <div id="modalWrapper">
+            <div className="FileModal" id="fileModal">
+            <input id="fileInput" type="text" onKeyPress={this.handleReturn} placeholder="Enter your FileName" className="FileInput"/>
+            </div>
+            </div>
             <div className = "Margin-wrapper" >
 
             <Editor id="Title"

@@ -11,65 +11,104 @@
   padding-left: 100px;
   padding-right: 100px;
 }
+
 .App {
-    margin-right: auto;
-    /*position: fixed;*/
-    z-index: 1;
-    cursor: text;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Helvetica', sans-serif;
+  margin-right: auto;
+  /*position: fixed;*/
+  width: 100%;
+  z-index: 1;
+  cursor: text;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .Inverted {
-    color: white;
+  color: white;
 }
 
 .Content {
-    line-height: 130%;
-    transition: color 1.0s ease;
-    color: black;
-    text-align: justify;
-    margin-top: 10px;
-    font-size: 20px;
-    margin-bottom: 10%;
-    outline: none;
-    min-height: 100vh;
+  line-height: 130%;
+  transition: color 1.0s ease;
+  color: black;
+  text-align: justify;
+  margin-top: 10px;
+  font-size: 20px;
+  margin-bottom: 10%;
+  outline: none;
+  min-height: 100vh;
 }
 
 .Title {
-    transition: color 1.0s ease;
-    color: black;
-    text-align: left;
-    margin-top: 5%;
-    font-size: 40px;
-    outline: none;
+  transition: color 1.0s ease;
+  color: black;
+  text-align: left;
+  margin-top: 5%;
+  font-size: 40px;
+  outline: none;
 }
 
 .Content.Inverted {
-    color: white;
+  color: white;
 }
 
 .Title.Inverted {
-    color: white;
+  color: white;
 }
 
 input:focus, select:focus, textarea:focus, button:focus div:focus {
-    outline: none;
+  outline: none;
 }
 
 .Margin-wrapper {
-    margin-left: 10%;
-    margin-right: 10%;
-    max-width: 800px;
-    min-width: 400px;
-    margin: 0 auto;
+  margin-left: 10%;
+  margin-right: 10%;
+  max-width: 800px;
+  min-width: 400px;
+  margin: 0 auto;
 }
 
 ::selection {
-    background: #ffb7b7;
-  }
+  background: #ffb7b7;
+}
 
-    .Content div {
-        padding-top: 20px;
-    }
+.Content div {
+  padding-top: 20px;
+}
+
+input[type="text"]{
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+input[type="text"]:focus {
+  border: solid 1px #707070;
+  box-shadow: 0 0 5px 1px #969696;
+}
+
+
+#fileInput {
+  display: inline-block;
+}
+
+#modalWrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#fileModal {
+  margin: 0 auto;
+  z-index: 1;
+  top: 40px;
+  display: block;
+  width: 200px;
+  position: absolute;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  padding: 20px;
+  background-color: white;
+  text-align: center;
+}
