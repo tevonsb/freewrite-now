@@ -1,0 +1,5 @@
+            <div id="modalWrapper">
+            <div className="FileModal" id="fileModal">
+            <input id="fileInput" type="text" onKeyPress={this.handleReturn} placeholder="Enter your FileName" className="FileInput"/>
+            </div>
+            </div>

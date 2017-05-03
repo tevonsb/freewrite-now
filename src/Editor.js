@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import './App.css';
 import ContentEditable from './contentEditable.js';
+import Paragraph from './paragraph.js'
 
 var canHandle;
 
@@ -22,6 +23,8 @@ class Editor extends Component {
     }
     canHandle = true;
     return(
+    <div>
+    <Paragraph content={"Hello there"}></Paragraph>
     <ContentEditable id={this.props.id}
     className={this.props.className}
     disabled={false} // use true to disable edition
@@ -29,7 +32,8 @@ class Editor extends Component {
     html={this.props.html}
     spellCheck={false}
     />
-  )
+    </div>
+  );
 }
 }
 
